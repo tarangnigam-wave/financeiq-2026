@@ -24,8 +24,23 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary"></div>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[#0f172a] text-white">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mb-6"></div>
+        <h2 className="text-2xl font-bold text-blue-400 mb-2">Waking up the Backend API</h2>
+        <p className="text-gray-400 max-w-md text-center">
+          Render's free tier automatically pauses inactive services. It can take up to 50 seconds for the backend to spin back up. Hang tight!
+        </p>
+      </div>
+    );
+  }
+  
+  if (!companies || companies.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[#0f172a] text-white">
+        <h2 className="text-2xl font-bold text-red-400 mb-2">Error Loading Data</h2>
+        <p className="text-gray-400 max-w-md text-center">
+          Could not fetch company data from the backend. Please check the browser console for more details.
+        </p>
       </div>
     );
   }
@@ -44,7 +59,7 @@ export default function App() {
   }));
 
   return (
-    <div className="min-h-screen p-6 md:p-10 font-sans">
+    <div className="min-h-screen p-6 md:p-10 font-sans bg-[#0f172a] text-white">
       {/* Header */}
       <header className="mb-10 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
         <div>
